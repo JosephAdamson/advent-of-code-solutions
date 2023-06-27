@@ -109,6 +109,10 @@ function partTwo() {
                 case "forward":
                     hPos += parseInt(inc);
                     dPos += (aim * parseInt(inc));
+                break;
+
+                default: console.log("cmd parsed incorrectly");
+                break;
             }
         }
         //console.log(`hPos: ${hPos}\ndPos: ${dPos}`);
