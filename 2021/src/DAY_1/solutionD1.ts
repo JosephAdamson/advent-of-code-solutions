@@ -1,20 +1,9 @@
 // read input file and store data as number array
-import { readFileSync } from 'fs'
+// import { readFileSync } from 'fs' 
 import { resolve } from 'path';
+import { readInDataInt } from "../utils";
 
-// helper functions
-function readInData() {
-    try {
-        console.log(resolve(__dirname, "input.txt"));
-        const dataRaw = readFileSync(resolve(__dirname, "input.txt"), "utf-8");
-        const dataArr = dataRaw.split("\n").map(num => {
-            return parseInt(num)
-        });
-        return dataArr;
-    } catch (error) {
-        console.log(error);
-    }
-}
+const path = resolve(__dirname, "input_D1.txt");
 
 /*
 --- Part 1 ---
@@ -53,7 +42,7 @@ In this example, there are 7 measurements that are larger than the previous meas
 How many measurements are larger than the previous measurement? 
 */
 function partOne() {
-    let data: number[] | undefined = readInData();
+    let data: number[] | undefined = readInDataInt(path);
     if (data) {
         console.log(data);
         let prev = data[0];
@@ -105,7 +94,7 @@ In this example, there are 5 sums that are larger than the previous sum.
 Consider sums of a three-measurement sliding window. How many sums are larger than the previous sum? 
 */
 function partTwo() {
-    let data: number[] | undefined = readInData();
+    let data: number[] | undefined = readInDataInt(path);
     if (data) {
         // sliding window
         let prevWindow = data[0] + data[1] + data[2];
