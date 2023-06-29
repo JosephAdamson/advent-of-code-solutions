@@ -3,8 +3,8 @@
 import { resolve } from 'path';
 import { readInDataInt } from "../utils";
 
-const path = resolve(__dirname, "input_D1.txt");
-
+const PATH = resolve(__dirname, "input_D1.txt");
+let data: number[] | undefined = readInDataInt(PATH);
 /*
 --- Part 1 ---
 As the submarine drops below the surface of the ocean, it automatically performs a sonar sweep of the nearby sea floor. On a small screen, the sonar sweep report (your puzzle input) appears: each line is a measurement of the sea floor depth as the sweep looks further and further away from the submarine.
@@ -41,10 +41,8 @@ In this example, there are 7 measurements that are larger than the previous meas
 
 How many measurements are larger than the previous measurement? 
 */
-function partOne() {
-    let data: number[] | undefined = readInDataInt(path);
+function partOne(data: number[] | undefined) {
     if (data) {
-        console.log(data);
         let prev = data[0];
         let count = 0;
         for (let i = 1; i < data.length; i++) {
@@ -53,10 +51,11 @@ function partOne() {
             }
             prev = data[i];
         }
-        console.log(count);
+        return count;
     }
 }
-partOne();
+partOne(data);
+
 
 // PASSED 1 star!
 
@@ -93,8 +92,7 @@ In this example, there are 5 sums that are larger than the previous sum.
 
 Consider sums of a three-measurement sliding window. How many sums are larger than the previous sum? 
 */
-function partTwo() {
-    let data: number[] | undefined = readInDataInt(path);
+function partTwo(data: number[] | undefined) {
     if (data) {
         // sliding window
         let prevWindow = data[0] + data[1] + data[2];
@@ -107,7 +105,13 @@ function partTwo() {
                 count++;
             }
         }
-        console.log(count);
+        return count;
     }
 }
-partTwo();
+partTwo(data);
+
+
+export {
+    partOne,
+    partTwo
+}

@@ -1,5 +1,4 @@
 import { readFileSync } from 'fs'
-import { resolve } from 'path';
 
 function readInDataInt(path: string) {
     try {

@@ -1,7 +1,8 @@
 import { readInDataStr } from "../utils";
 import { resolve } from "path";
 
-const path = resolve(__dirname, "input_D2.txt");
+const PATH = resolve(__dirname, "input_D2.txt");
+const data: string[] | undefined = readInDataStr(PATH);
 
 /* 
  --- Day 2: Dive! ---
@@ -34,9 +35,7 @@ After following these instructions, you would have a horizontal position of 15 a
 
 Calculate the horizontal position and depth you would have after following the planned course. What do you get if you multiply your final horizontal position by your final depth?
 */
-function partOne() {
-    // load in data
-    const data: string[] | undefined = readInDataStr(path);
+function partOne(data: string[] | undefined) {
     // our starting positions (both start at 0)
     if (data) {
         let hPos = 0;
@@ -59,10 +58,10 @@ function partOne() {
             }
         }
         //console.log(`hPos: ${hPos}\ndPos: ${dPos}`);
-        console.log(hPos * dPos);
+        return hPos * dPos;
     }
 }
-partOne();
+partOne(data);
 
 /*
 --- Part Two ---
@@ -90,8 +89,7 @@ After following these new instructions, you would have a horizontal position of 
 Using this new interpretation of the commands, calculate the horizontal position and depth you would have after following the planned course. What do you get if you multiply your final horizontal position by your final depth?
 */
 
-function partTwo() {
-    const data: string[] | undefined = readInDataStr(path);
+function partTwo(data: string[] | undefined) {
     if (data) {
         let aim = 0;
         let hPos = 0;
@@ -116,7 +114,12 @@ function partTwo() {
             }
         }
         //console.log(`hPos: ${hPos}\ndPos: ${dPos}`);
-        console.log(hPos * dPos);
+        return hPos * dPos;
     }
 }
-partTwo();
+partTwo(data);
+
+export {
+    partOne,
+    partTwo
+}
