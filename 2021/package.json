@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./dist/DAY_4/solutionD4.js",
+    "start": "node ./dist/DAY_5/solutionD5.js",
     "test": "jest"
   },
   "keywords": [],
