@@ -72,7 +72,7 @@ Find a way to simulate lanternfish. How many lanternfish would there be after 80
 
 function partOne(school: number[] | undefined) {
     if (school) {
-        // naive O(80 * n) where n expands ~= O(n^2) (BAD)
+        // naive O(days * n) where n doubles every 6 cycles and days is 80
         let babies = 0;
         for (let day = 0; day < 80; day++) {
             for (let i = 0; i < school.length; i++) {
@@ -115,6 +115,8 @@ For the initial state of the starting example: 3,4,3,1,2, this would be represen
 
 days util reproduction:  0  1  2  3  4  5  6  7  8
                         [0, 1, 1, 2, 1, 0, 0, 0, 0]
+
+Technically time complexity O(days * n), this time n has a fixed value of 9
 */
 function partTwo(school: number[] | undefined) {
     if (school) {
