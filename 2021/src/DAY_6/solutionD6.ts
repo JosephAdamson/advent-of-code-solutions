@@ -89,15 +89,6 @@ function partOne(school: number[] | undefined) {
                 babies--;
             }
         }
-        // const f = Array(9).fill(0);
-        // for (let value of school) {
-        //     f[value]++;
-        // }
-        // console.log(f);
-        // console.log(f.reduce((acc, curr) => {
-        //     return acc += curr;
-        // }));
-        //console.log(school.length);
         return school.length;
     } else {
         throw new Error("Where's tha fish?");
