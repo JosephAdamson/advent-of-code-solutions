@@ -11,7 +11,6 @@ function processInput(path: string) {
         const data = dataRaw
             .split(",")
             .map(value => parseInt(value));
-            //.map(value => new LanternFish(parseInt(value)));
         return data;
     } catch (error) {
         console.log(error);
