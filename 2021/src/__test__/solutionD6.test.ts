@@ -19,12 +19,6 @@ test("part one test", () => {
     expect(actual).toBe(expected);
 });
 
-// test("part two test 80 cycles", () => {
-//     const expected = BigInt(5934);
-//     const actual = partTwo(school);
-//     expect(actual).toBe(expected);
-// });
-
 test("part two test 250 cycles", () => {
     const expected = BigInt(26984457539);
     const actual = partTwo(school);

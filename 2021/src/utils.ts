@@ -1,5 +1,6 @@
 import { readFileSync } from 'fs'
 
+
 function readInDataInt(path: string) {
     try {
         const dataRaw = readFileSync(path, "utf-8");
