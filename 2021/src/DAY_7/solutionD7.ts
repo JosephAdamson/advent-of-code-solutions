@@ -128,7 +128,7 @@ function partTwo(crabs: number[] | undefined) {
         return totalFuel;
     }
 }
-console.log(partTwo(crabs));
+//console.log(partTwo(crabs));
 
 // helper for calculating trianglar numbers (fuel cost according to crab logic)
 function triNum(n: number) {

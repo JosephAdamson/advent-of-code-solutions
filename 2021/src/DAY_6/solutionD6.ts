@@ -142,7 +142,7 @@ function partTwo(school: number[] | undefined) {
         return result;
     }
 }
-console.log(partTwo(school));
+//console.log(partTwo(school));
 
 export {
     partOne,
