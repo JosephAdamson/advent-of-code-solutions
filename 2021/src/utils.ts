@@ -21,7 +21,20 @@ function readInDataStr(path: string) {
     }
 }
 
+function processInputIntArr(path: string) {
+    try {
+        const dataRaw = readFileSync(path, "utf-8");
+        const data = dataRaw
+            .split(",")
+            .map(value => parseInt(value));
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export {
     readInDataInt,
-    readInDataStr
+    readInDataStr,
+    processInputIntArr
 }
