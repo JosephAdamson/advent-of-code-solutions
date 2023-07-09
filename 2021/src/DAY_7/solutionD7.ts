@@ -112,7 +112,7 @@ an escape route! How much fuel must they spend to align to that position?
 
 Thoughts
 
-- Calculate the Mean of the input and use that for our horizontal position
+- Calculate the Mean of the input and use that for our horizontal position?
 */
 function partTwo(crabs: number[] | undefined) {
     if (crabs) {
