@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./dist/DAY_7/solutionD7.js",
-    "test": "jest solutionD7.test.ts"
+    "start": "node ./dist/DAY_8/solutionD8.js",
+    "test": "jest solutionD8.test.ts"
   },
   "keywords": [],
   "author": "",
