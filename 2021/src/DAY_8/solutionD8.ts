@@ -244,8 +244,6 @@ function partTwo(data: string[] | undefined) {
                     if (!isSuperset(combo, one) && !isSuperset(six, combo)){ m.set("2", combo); }
                 }
             });
-            console.log(m);
-            console.log(output);
 
             //process the output for the data point
             const entries = [...m.entries()];
@@ -260,13 +258,13 @@ function partTwo(data: string[] | undefined) {
                     }
                 }
             }
-            console.log(numStr);
+            //console.log(numStr);
             total += parseInt(numStr);
         }
         return total;
     }
 }
-console.log(partTwo(data));
+//console.log(partTwo(data));
 
 export {
     partOne,
