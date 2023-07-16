@@ -79,22 +79,18 @@ function getLowPointCoords(data: number[][]) {
                     if (j === 0) {
                         if (data[i][j + 1] > currVal && data[i + 1][j] > currVal) {
                             coords.push([i, j]);
-
                         }
                     } else if (j === m - 1) {
                         if (data[i][j - 1] > currVal && data[i + 1][j] > currVal) {
                             coords.push([i, j]);
-
                         }
                     } else {
                         if (data[i][j - 1] > currVal &&
                             data[i][j + 1] > currVal &&
                             data[i + 1][j] > currVal) {
                             coords.push([i, j]);
-
                         }
                     }
-
                 }
 
                 // bottom row
@@ -102,19 +98,16 @@ function getLowPointCoords(data: number[][]) {
                     if (j == 0) {
                         if (data[i][j + 1] > currVal && data[i - 1][j] > currVal) {
                             coords.push([i, j]);
-
                         }
                     } else if (j === m - 1) {
                         if (data[i][j - 1] > currVal && data[i - 1][j] > currVal) {
                             coords.push([i, j]);
-
                         }
                     } else {
                         if (data[i][j - 1] > currVal &&
                             data[i][j + 1] > currVal &&
                             data[i - 1][j] > currVal) {
                             coords.push([i, j]);
-
                         }
                     }
                 }
@@ -125,7 +118,6 @@ function getLowPointCoords(data: number[][]) {
                         data[i][j + 1] > currVal &&
                         data[i + 1][j] > currVal) {
                         coords.push([i, j]);
-
                     }
                 }
 
@@ -135,7 +127,6 @@ function getLowPointCoords(data: number[][]) {
                         data[i][j - 1] > currVal &&
                         data[i + 1][j] > currVal) {
                         coords.push([i, j]);
-
                     }
                 }
             } else {
