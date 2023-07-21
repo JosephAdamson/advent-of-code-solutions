@@ -1,4 +1,4 @@
-import { partOne , drawLines, partTwo } from "../DAY_5/solutionD5";
+import { partOne, partTwo } from "../DAY_5/solutionD5";
 
 const vectors: string[][] = [
     ["0,9", "5,9"],

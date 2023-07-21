@@ -7,12 +7,11 @@ const PATH = resolve(__dirname, "input_D4.txt");
 let draws: number[] | undefined;
 let boards: number[][] = [];
 
-// playing around with the streaming api
 function processInput(path: string) {
     // load in all data into memory
     const data = readFileSync(path, "utf-8");
     const sections = data.split("\n");
-    // first string is draws
+    // first string are the draws
     draws = sections[0]
         .split(",")
         .map(token => parseInt(token));

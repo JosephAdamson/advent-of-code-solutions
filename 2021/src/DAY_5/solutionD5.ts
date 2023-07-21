@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import { resolve } from "path";
+import { drawMatrix } from "../utils";
 
 const PATH = resolve(__dirname, "input_D5.txt");
 
@@ -24,18 +25,6 @@ function processInput(path: string) {
 }
 processInput(PATH);
 
-
-// pretty printing for solution
-function drawLines(lines: number[][]) {
-    let lineStr = ""
-    for (let line of lines) {
-        for (let value of line) {
-            lineStr = lineStr.concat(value.toString());
-        }
-        lineStr = lineStr.concat("\n");
-    }
-    console.log(lineStr);
-}
 /* 
 --- Day 5: Hydrothermal Venture ---
 You come across a field of hydrothermal vents on the ocean floor! These vents constantly produce large, opaque clouds, so it would be best to avoid them if possible.
@@ -219,5 +208,4 @@ console.log(partTwo(vectors, lines));
 export {
     partOne,
     partTwo,
-    drawLines
 }

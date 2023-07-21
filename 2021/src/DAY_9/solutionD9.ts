@@ -1,24 +1,16 @@
 import { readFileSync } from "fs";
 import { resolve } from "path";
+import { padMatrix, processData2DIntArr } from "../utils";
+
 
 const PATH = resolve(__dirname, "input_D9.txt");
 
-const data: number[][] | undefined = processData(PATH);
-
-function processData(path: string) {
-    try {
-        const data: number[][] = [];
-        const dataRaw = readFileSync(path, "utf-8");
-        dataRaw.split("\n").forEach(line =>
-            data.push(line.split("")
-                .map(value => parseInt(value))
-            )
-        );
-        return data;
-    } catch (error) {
-        console.log(error);
-    }
-}
+// handle edge cases, rather than use a buch of if statments to address each case
+// we create a padded copy of the original array and iterate over that.
+// even better we can pad with 9s that we can ignore. This may use a bit more memory 
+// than the more comprenhesive solution where we handle every edge case BUT its a
+// good way to generic way to handle this problem.
+const data: number[][] | undefined = processData2DIntArr(PATH);
 
 /*
 --- Day 9: Smoke Basin ---
@@ -67,76 +59,87 @@ function getLowPointCoords(data: number[][]) {
     const m = data[0].length;
 
     const coords: number[][] = [];
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < m; j++) {
 
+    for (let i = 1; i < n - 1; i++) {
+        for (let j = 1; j < m - 1; j++) {
+            //console.log(paddedData[i][j]);
+            
             const currVal = data[i][j];
 
-            // handle edge cases
-            if (i === 0 || j === 0 || i === n - 1 || j === m - 1) {
-                // top row
-                if (i === 0) {
-                    if (j === 0) {
-                        if (data[i][j + 1] > currVal && data[i + 1][j] > currVal) {
-                            coords.push([i, j]);
-                        }
-                    } else if (j === m - 1) {
-                        if (data[i][j - 1] > currVal && data[i + 1][j] > currVal) {
-                            coords.push([i, j]);
-                        }
-                    } else {
-                        if (data[i][j - 1] > currVal &&
-                            data[i][j + 1] > currVal &&
-                            data[i + 1][j] > currVal) {
-                            coords.push([i, j]);
-                        }
-                    }
-                }
+            if (currVal === 9) { continue; }
 
-                // bottom row
-                if (i === n - 1) {
-                    if (j == 0) {
-                        if (data[i][j + 1] > currVal && data[i - 1][j] > currVal) {
-                            coords.push([i, j]);
-                        }
-                    } else if (j === m - 1) {
-                        if (data[i][j - 1] > currVal && data[i - 1][j] > currVal) {
-                            coords.push([i, j]);
-                        }
-                    } else {
-                        if (data[i][j - 1] > currVal &&
-                            data[i][j + 1] > currVal &&
-                            data[i - 1][j] > currVal) {
-                            coords.push([i, j]);
-                        }
-                    }
-                }
-
-                // left side
-                if (i !== 0 && i !== n - 1 && j === 0) {
-                    if (data[i - 1][j] > currVal &&
-                        data[i][j + 1] > currVal &&
-                        data[i + 1][j] > currVal) {
-                        coords.push([i, j]);
-                    }
-                }
-
-                // right side
-                if (i !== 0 && i !== n - 1 && j === m - 1) {
-                    if (data[i - 1][j] > currVal &&
-                        data[i][j - 1] > currVal &&
-                        data[i + 1][j] > currVal) {
-                        coords.push([i, j]);
-                    }
-                }
-            } else {
-                if (data[i][j - 1] > currVal &&
-                    data[i - 1][j] > currVal &&
-                    data[i][j + 1] > currVal &&
-                    data[i + 1][j] > currVal) {
-                    coords.push([i, j]);
-                }
+            if (data[i - 1][j] > currVal && // top
+                data[i + 1][j] > currVal && // bottom
+                data[i][j - 1] > currVal && // left
+                data[i][j + 1] > currVal) { // right
+                coords.push([i, j]);
             }
+
+            // How I previously handled the edge cases
+            // if (i === 0 || j === 0 || i === n - 1 || j === m - 1) {
+            //     // top row
+            //     if (i === 0) {
+            //         if (j === 0) {
+            //             if (data[i][j + 1] > currVal && data[i + 1][j] > currVal) {
+            //                 coords.push([i, j]);
+            //             }
+            //         } else if (j === m - 1) {
+            //             if (data[i][j - 1] > currVal && data[i + 1][j] > currVal) {
+            //                 coords.push([i, j]);
+            //             }
+            //         } else {
+            //             if (data[i][j - 1] > currVal &&
+            //                 data[i][j + 1] > currVal &&
+            //                 data[i + 1][j] > currVal) {
+            //                 coords.push([i, j]);
+            //             }
+            //         }
+            //     }
+
+            //     // bottom row
+            //     if (i === n - 1) {
+            //         if (j == 0) {
+            //             if (data[i][j + 1] > currVal && data[i - 1][j] > currVal) {
+            //                 coords.push([i, j]);
+            //             }
+            //         } else if (j === m - 1) {
+            //             if (data[i][j - 1] > currVal && data[i - 1][j] > currVal) {
+            //                 coords.push([i, j]);
+            //             }
+            //         } else {
+            //             if (data[i][j - 1] > currVal &&
+            //                 data[i][j + 1] > currVal &&
+            //                 data[i - 1][j] > currVal) {
+            //                 coords.push([i, j]);
+            //             }
+            //         }
+            //     }
+
+            //     // left side
+            //     if (i !== 0 && i !== n - 1 && j === 0) {
+            //         if (data[i - 1][j] > currVal &&
+            //             data[i][j + 1] > currVal &&
+            //             data[i + 1][j] > currVal) {
+            //             coords.push([i, j]);
+            //         }
+            //     }
+
+            //     // right side
+            //     if (i !== 0 && i !== n - 1 && j === m - 1) {
+            //         if (data[i - 1][j] > currVal &&
+            //             data[i][j - 1] > currVal &&
+            //             data[i + 1][j] > currVal) {
+            //             coords.push([i, j]);
+            //         }
+            //     }
+            // } else {
+            //     if (data[i][j - 1] > currVal &&
+            //         data[i - 1][j] > currVal &&
+            //         data[i][j + 1] > currVal &&
+            //         data[i + 1][j] > currVal) {
+            //         coords.push([i, j]);
+            //     }
+            // }
 
         }
     }
@@ -146,11 +149,12 @@ function getLowPointCoords(data: number[][]) {
 
 function partOne(data: number[][] | undefined) {
     if (data) {
-        const coords = getLowPointCoords(data);
+        const paddedData = padMatrix(data, 9);
+        const coords = getLowPointCoords(paddedData);
         let riskLevel = 0;
         for (let coord of coords) {
             let [i, j] = coord;
-            riskLevel = riskLevel + data[i][j] + 1;
+            riskLevel = riskLevel + paddedData[i][j] + 1;
         }
         return riskLevel;
     }
@@ -207,7 +211,8 @@ function partTwo(data: number[][] | undefined) {
     if (data) {
         const n = data.length;
         const m = data[0].length;
-        const coords = getLowPointCoords(data);
+        const paddedData = padMatrix(data, 9);
+        const coords = getLowPointCoords(paddedData);
 
         let basinSizes: number[] = [];
         for (let coord of coords) {
@@ -223,7 +228,7 @@ function partTwo(data: number[][] | undefined) {
     }
 }
 
-//console.log(partTwo(data));
+console.log(partTwo(data));
 
 // Helper function to sweep the area around each low point and find the size of its
 // surrounding basin.

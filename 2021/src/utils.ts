@@ -34,6 +34,21 @@ function processInputIntArr(path: string) {
     }
 }
 
+function processData2DIntArr(path: string) {
+    try {
+        const data: number[][] = [];
+        const dataRaw = readFileSync(path, "utf-8");
+        dataRaw.split("\n").forEach(line =>
+            data.push(line.split("")
+                .map(value => parseInt(value))
+            )
+        );
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 // adapted set operations from 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 function isSuperset<T>(set: Set<T>, subset: Set<T>) {
@@ -88,14 +103,44 @@ function eqSet<T>(setA: Set<T>, setB: Set<T>) {
         [...setA].every(value => setB.has(value));
 }
 
+// pretty printing for solution for matricies/2d arrays
+function drawMatrix(lines: number[][]) {
+    let lineStr = ""
+    for (let line of lines) {
+        for (let value of line) {
+            lineStr = lineStr.concat(value.toString() + " ");
+        }
+        lineStr = lineStr.concat("\n");
+    }
+    console.log(lineStr);
+}
+
+function padMatrix(data: number[][], paddingValue: number) {
+    if (data) {
+        const m = data[0].length;
+        const paddedData: number[][] = [];
+        paddedData.push(Array(m + 2).fill(paddingValue));
+        for (let row of data) {
+            paddedData.push([paddingValue, ...row, paddingValue]);
+        }
+        paddedData.push(Array(m + 2).fill(paddingValue));
+        return paddedData;
+    } else {
+        throw Error("data is null or undefined");
+    }
+}
+
 export {
     readInDataInt,
     readInDataStr,
     processInputIntArr,
+    processData2DIntArr,
     isSuperset,
     union,
     intersection,
     symmetricDifference,
     difference,
-    eqSet
+    eqSet,
+    drawMatrix,
+    padMatrix
 }

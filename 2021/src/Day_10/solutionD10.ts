@@ -109,7 +109,7 @@ function readChunks(data: string[]) {
         if (first) {
             stack.push(first);
         } else {
-            throw new Error("chunkLine empty!");
+            throw new Error("chunk sequence empty!");
         }
         // Here we only care about errors
         for (let i = 0; i < chunkSequence.length; i++) {
@@ -140,6 +140,7 @@ function readChunks(data: string[]) {
     }
     return results;
 }
+
 
 function partOne(data: string[] | undefined) {
     if (data) {
