@@ -322,7 +322,6 @@ Thoughts:
         - restart of the beginning of the data set
 
 */
-
 function checkflashed(i: number, j: number, flashTable: number[][], data: number[][]) {
     if (flashTable[i][j] !== -1) {
         data[i][j]++;
