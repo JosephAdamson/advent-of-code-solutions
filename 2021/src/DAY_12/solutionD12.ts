@@ -175,7 +175,6 @@ function dfs(state: Graph,
 }
 
 
-
 function isLowerCase(token: string) {
     return token.toLowerCase() === token;
 }

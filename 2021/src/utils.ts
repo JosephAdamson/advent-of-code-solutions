@@ -104,11 +104,11 @@ function eqSet<T>(setA: Set<T>, setB: Set<T>) {
 }
 
 // pretty printing for solution for matricies/2d arrays
-function drawMatrix(lines: number[][]) {
+function drawMatrix<T>(lines: T[][]) {
     let lineStr = ""
     for (let line of lines) {
         for (let value of line) {
-            lineStr = lineStr.concat(value.toString() + " ");
+            lineStr = lineStr.concat(value + " ");
         }
         lineStr = lineStr.concat("\n");
     }
