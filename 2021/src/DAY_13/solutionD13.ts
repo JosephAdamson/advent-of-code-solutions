@@ -247,7 +247,6 @@ function partTwo(state: number[][] | undefined, folds: string[][] | undefined) {
             );
             yAxis = subMatrixBounds[0];
             xAxis = subMatrixBounds[1];
-            let code = "";
         }
         // draw sub array to view characters
         let code = "";
