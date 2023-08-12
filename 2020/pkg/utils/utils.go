@@ -14,6 +14,15 @@ func GetPath() string {
 	return dir
 }
 
+func ProcessStrData(path string) []string {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		panic(err)
+	}
+	tokens := strings.Split(string(data), "\n")
+	return tokens
+}
+
 func ProcessIntData(path string) []int {
 	data, err := os.ReadFile(path)
 	if err != nil {

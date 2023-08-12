@@ -53,7 +53,6 @@ func partOne(data []int) int {
 		}
 		prevVals[curr] = i
 	}
-	// couldn't find what we were looking for
 	return -1
 }
 
