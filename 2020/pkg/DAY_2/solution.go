@@ -124,7 +124,7 @@ func partTwo(data [][]string) int {
 
 func main() {
 	path := utils.GetPath() + "/input_D2.txt"
-	data := utils.ProcessStrData(path)
+	data := utils.ProcessStrData(path, "\n")
 	pd := processData(data)
 	fmt.Println(partOne(pd))
 	fmt.Println(partTwo(pd))

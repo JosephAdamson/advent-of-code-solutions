@@ -14,21 +14,21 @@ func GetPath() string {
 	return dir
 }
 
-func ProcessStrData(path string) []string {
+func ProcessStrData(path string, delimiter string) []string {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		panic(err)
 	}
-	tokens := strings.Split(string(data), "\n")
+	tokens := strings.Split(string(data), delimiter)
 	return tokens
 }
 
-func ProcessIntData(path string) []int {
+func ProcessIntData(path string, deliemter string) []int {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		panic(err)
 	}
-	tokens := strings.Split(string(data), "\n")
+	tokens := strings.Split(string(data), deliemter)
 	var result []int
 	for _, val := range tokens {
 		num, err := strconv.Atoi(val)

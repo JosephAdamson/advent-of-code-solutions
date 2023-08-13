@@ -1,13 +1,14 @@
 package main
 
 import (
-	"2020/pkg/utils"
 	"fmt"
 	"strings"
+
+	"2020/pkg/utils"
 )
 
 func processData(path string) [][]string {
-	raw := utils.ProcessStrData(path)
+	raw := utils.ProcessStrData(path, "\n")
 	var areaMap [][]string
 	for _, line := range raw {
 		areaMap = append(areaMap, strings.Split(line, ""))
