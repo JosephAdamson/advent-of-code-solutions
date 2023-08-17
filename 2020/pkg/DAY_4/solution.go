@@ -228,11 +228,7 @@ func partTwo(entries []map[string]string) int {
 			}
 
 			// check ecl and pid
-			if !eclSet[entry["ecl"]] {
-				continue
-			}
-
-			if len(entry["pid"]) != 9 {
+			if !eclSet[entry["ecl"]] || len(entry["pid"]) != 9 {
 				continue
 			}
 
