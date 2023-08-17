@@ -98,7 +98,6 @@ func partOne(data [][]string) (int, []int) {
 	sort.Slice(seatIDs, func(a int, b int) bool {
 		return seatIDs[a] > seatIDs[b]
 	})
-	//log.Print(seatIDs)
 	return seatIDs[0], seatIDs
 }
 
