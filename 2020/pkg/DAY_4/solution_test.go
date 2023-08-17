@@ -8,7 +8,6 @@ import (
 func Test_partOne(t *testing.T) {
 	path := utils.GetPath() + "/input_D4_test.txt"
 	entries := processData(path)
-
 	expected := 2
 	actual := partOne(entries)
 	if expected != actual {
