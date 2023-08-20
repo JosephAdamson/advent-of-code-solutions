@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"strconv"
 	"strings"
@@ -57,13 +58,13 @@ limits of their respective policies.
 
 How many passwords are valid according to their policies?
 */
-func partOne(data [][]string) int {
+func partOne(data [][]string) (int, error) {
 	valid := 0
 	for _, entry := range data {
 		lower, lowerErr := strconv.Atoi(entry[0])
 		upper, upperErr := strconv.Atoi(entry[1])
 		if lowerErr != nil || upperErr != nil {
-			panic("Couldn't parse bounds tokens")
+			return 0, errors.New("couldn't parse bounds tokens")
 		}
 		target := string(entry[2])
 		password := strings.Split(entry[3], "")
@@ -79,7 +80,7 @@ func partOne(data [][]string) int {
 			valid++
 		}
 	}
-	return valid
+	return valid, nil
 }
 
 /*
@@ -103,13 +104,13 @@ Given the same example list from above:
 2-9 c: ccccccccc is invalid: both position 2 and position 9 contain c.
 How many passwords are valid according to the new interpretation of the policies?
 */
-func partTwo(data [][]string) int {
+func partTwo(data [][]string) (int, error) {
 	valid := 0
 	for _, entry := range data {
 		lower, lowerErr := strconv.Atoi(entry[0])
 		upper, upperErr := strconv.Atoi(entry[1])
 		if lowerErr != nil || upperErr != nil {
-			panic("Couldn't parse bounds tokens")
+			return 0, errors.New("couldn't parse bounds tokens")
 		}
 		target := string(entry[2])
 		password := strings.Split(entry[3], "")
@@ -119,12 +120,13 @@ func partTwo(data [][]string) int {
 			valid++
 		}
 	}
-	return valid
+	return valid, nil
 }
 
 func main() {
-	path := utils.GetPath() + "/input_D2.txt"
-	data := utils.ProcessStrData(path, "\n")
+	path, _ := utils.GetPath()
+	path = path + "/input_D2.txt"
+	data, _ := utils.ProcessStrData(path, "\n")
 	pd := processData(data)
 	fmt.Println(partOne(pd))
 	fmt.Println(partTwo(pd))

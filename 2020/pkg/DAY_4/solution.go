@@ -10,7 +10,10 @@ import (
 )
 
 func processData(path string) []map[string]string {
-	raw := utils.ProcessStrData(path, "\n\n")
+	raw, err := utils.ProcessStrData(path, "\n\n")
+	if err != nil {
+		panic("cannot parse data")
+	}
 	var entries []map[string]string
 	for _, entry := range raw {
 		sanitizedEntry := strings.ReplaceAll(entry, "\n", " ")
@@ -239,7 +242,8 @@ func partTwo(entries []map[string]string) int {
 }
 
 func main() {
-	path := utils.GetPath() + "/input_D4.txt"
+	path, _ := utils.GetPath()
+	path = path + "/input_D4.txt"
 	entries := processData(path)
 	fmt.Println(partOne(entries))
 	fmt.Println(partTwo(entries))

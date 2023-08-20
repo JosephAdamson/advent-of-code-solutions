@@ -10,7 +10,7 @@ func Test_partOne(t *testing.T) {
 	}
 	pd := processData(data)
 	expected := 2
-	actual := partOne(pd)
+	actual, _ := partOne(pd)
 	if expected != actual {
 		t.Errorf("%d didn't match %d", expected, actual)
 	}
@@ -24,7 +24,7 @@ func Test_partTwo(t *testing.T) {
 	}
 	pd := processData(data)
 	expected := 1
-	actual := partTwo(pd)
+	actual, _ := partTwo(pd)
 	if expected != actual {
 		t.Errorf("%d didn't match %d", expected, actual)
 	}

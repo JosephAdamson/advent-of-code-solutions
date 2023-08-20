@@ -8,7 +8,10 @@ import (
 )
 
 func processInput(path string) [][]string {
-	rawData := utils.ProcessStrData(path, "\n")
+	rawData, err := utils.ProcessStrData(path, "\n")
+	if err != nil {
+		panic("could not parse data")
+	}
 	var result [][]string
 	for _, entry := range rawData {
 		result = append(result, strings.Split(entry, ""))
@@ -130,7 +133,8 @@ func partTwo(data []int) []int {
 }
 
 func main() {
-	path := utils.GetPath() + "/input_D5.txt"
+	path, _ := utils.GetPath()
+	path = path + "/input_D5.txt"
 	data := processInput(path)
 	highestID, seatIDs := partOne(data)
 	fmt.Println(highestID)

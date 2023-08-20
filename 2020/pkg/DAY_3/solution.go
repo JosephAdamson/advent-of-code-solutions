@@ -8,7 +8,10 @@ import (
 )
 
 func processData(path string) [][]string {
-	raw := utils.ProcessStrData(path, "\n")
+	raw, err := utils.ProcessStrData(path, "\n")
+	if err != nil {
+		panic("cannot parse data")
+	}
 	var areaMap [][]string
 	for _, line := range raw {
 		areaMap = append(areaMap, strings.Split(line, ""))
@@ -134,7 +137,8 @@ func partTwo(areaMap [][]string) int {
 }
 
 func main() {
-	path := utils.GetPath() + "/input_D3.txt"
+	path, _ := utils.GetPath()
+	path = path + "/input_D3.txt"
 	areaMap := processData(path)
 	fmt.Println(partOne(areaMap, 3, 1))
 	fmt.Println(partTwo(areaMap))

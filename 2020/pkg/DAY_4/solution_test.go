@@ -6,7 +6,8 @@ import (
 )
 
 func Test_partOne(t *testing.T) {
-	path := utils.GetPath() + "/input_D4_test.txt"
+	path, _ := utils.GetPath()
+	path = path + "/input_D4_test.txt"
 	entries := processData(path)
 	expected := 2
 	actual := partOne(entries)
@@ -27,7 +28,8 @@ func Test_byr(t *testing.T) {
 }
 
 func Test_partTwo(t *testing.T) {
-	path := utils.GetPath() + "/input_D4_test_2.txt"
+	path, _ := utils.GetPath()
+	path = path + "/input_D4_test.txt"
 	entries := processData(path)
 
 	expected := 4
