@@ -90,7 +90,7 @@ func partTwo(data []int) int {
 func main() {
 	path, _ := utils.GetPath()
 	path = path + "/input_D1.txt"
-	data, _ := utils.ProcessIntData(path, "\n")
+	data, _ := utils.ReadInputInt(path, "\n")
 
 	fmt.Println(partOne(data))
 	fmt.Println(partTwo(data))

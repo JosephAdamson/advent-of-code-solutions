@@ -8,7 +8,7 @@ import (
 )
 
 func processData(path string) [][]string {
-	raw, err := utils.ProcessStrData(path, "\n")
+	raw, err := utils.ReadInputStr(path, "\n")
 	if err != nil {
 		panic("cannot parse data")
 	}

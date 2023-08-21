@@ -126,7 +126,7 @@ func partTwo(data [][]string) (int, error) {
 func main() {
 	path, _ := utils.GetPath()
 	path = path + "/input_D2.txt"
-	data, _ := utils.ProcessStrData(path, "\n")
+	data, _ := utils.ReadInputStr(path, "\n")
 	pd := processData(data)
 	fmt.Println(partOne(pd))
 	fmt.Println(partTwo(pd))

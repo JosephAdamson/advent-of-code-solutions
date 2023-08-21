@@ -10,7 +10,7 @@ import (
 )
 
 func processData(path string) []map[string]string {
-	raw, err := utils.ProcessStrData(path, "\n\n")
+	raw, err := utils.ReadInputStr(path, "\n\n")
 	if err != nil {
 		panic("cannot parse data")
 	}

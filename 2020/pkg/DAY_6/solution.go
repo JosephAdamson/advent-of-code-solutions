@@ -7,7 +7,7 @@ import (
 )
 
 func processInput(path string) []string {
-	rawData, err := utils.ProcessStrData(path, "\n\n")
+	rawData, err := utils.ReadInputStr(path, "\n\n")
 	if err != nil {
 		panic("could not parse data")
 	}
