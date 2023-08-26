@@ -3,7 +3,6 @@ package main
 import (
 	"2020/pkg/utils"
 	"fmt"
-	"log"
 	"regexp"
 	"strconv"
 	"strings"
@@ -224,9 +223,7 @@ func partTwo(entries []map[string]string) int {
 			// check hcl
 			hcl := entry["hcl"]
 			hclCode := hclPattern.FindAllString(hcl[1:], -1)
-			log.Print(hclCode)
 			if string(hcl[0]) != "#" || len(hclCode) != 6 {
-				log.Print("bad")
 				continue
 			}
 
