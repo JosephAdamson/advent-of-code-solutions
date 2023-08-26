@@ -150,7 +150,7 @@ Thoughts:
 
   - Use another sliding window, growth is bounded by the target sum of the window (partOne answer)
   - Once we have found our window, sort it and take the upper and lower bounds.
-  - e have to go big
+  - We have to go big
 */
 func partTwo(data []int, preamble int) int {
 	invalidNum := big.NewInt(int64(partOne(data, preamble)))
