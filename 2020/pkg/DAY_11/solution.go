@@ -153,7 +153,6 @@ func dup2D[T comparable](grid [][]T) [][]T {
 }
 
 func checkRuleUnoccupied(state [][]string, i, j int) bool {
-	// can't have complex types as a constant
 	frame := initFrame()
 	for _, adjacentPoints := range frame {
 		neighbour := state[i+adjacentPoints[0]][j+adjacentPoints[1]]
