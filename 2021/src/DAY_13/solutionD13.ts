@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import { resolve } from "path";
 
-const PATH = resolve(__dirname, "input_D13.txt");
+const PATH = resolve("src/DAY_13/input_D13.txt");
 let dots;
 let folds;
 const state: number[][] = [];

@@ -1,7 +1,7 @@
 import { resolve } from "path";
 import { readFileSync } from "fs";
 
-const PATH = resolve(__dirname, "input_D4.txt");
+const PATH = resolve("src/DAY_4/input_D4.txt");
 
 // store processed data in global variables
 let draws: number[] | undefined;

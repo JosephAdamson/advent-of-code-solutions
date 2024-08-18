@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { resolve } from "path";
 import { processInputIntArr } from "../utils";
 
-const PATH = resolve(__dirname, "input_D7.txt");
+const PATH = resolve("src/DAY_7/input_D7.txt");
 
 let crabs: number[] | undefined = processInputIntArr(PATH);
 

@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import { resolve } from "path";
 
-const PATH = resolve(__dirname, "input_D14.txt");
+const PATH = resolve("src/DAY_14/input_D14.txt");
 
 let templateMap;
 let polymerData;

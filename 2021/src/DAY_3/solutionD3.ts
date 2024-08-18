@@ -1,7 +1,7 @@
 import { readInDataStr } from "../utils";
 import { resolve } from "path";
 
-const PATH = resolve(__dirname, "input_D3.txt");
+const PATH = resolve("src/DAY_3/input_D3.txt");
 
 /*
 --- Day 3: Binary Diagnostic ---
@@ -85,7 +85,7 @@ function partOne() {
                 epsilon.push("0");
             }
         }
-        console.log(parseInt(gamma.join(""), 2) * parseInt(epsilon.join(""), 2));
+        // console.log(parseInt(gamma.join(""), 2) * parseInt(epsilon.join(""), 2));
     }
 }
 partOne();
@@ -146,7 +146,7 @@ function partTwo() {
         const oxygenRating = partTwoHelper([...data], Criteria.OXYGEN);
         const CO2Rating = partTwoHelper([...data], Criteria.CO2);
         const lifeSupportRating = parseInt(oxygenRating[0], 2) * parseInt(CO2Rating[0], 2);
-        console.log(lifeSupportRating); 
+        // console.log(lifeSupportRating); 
     }
 }
 

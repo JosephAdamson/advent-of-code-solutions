@@ -1,7 +1,7 @@
 import { readInDataStr } from "../utils";
 import { resolve } from "path";
 
-const PATH = resolve(__dirname, "input_D10.txt");
+const PATH = resolve("src/DAY_10/input_D10.txt");
 
 let data: string[] | undefined = readInDataStr(PATH);
 

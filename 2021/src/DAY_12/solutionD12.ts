@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { resolve } from "path";
 import { readInDataStr } from "../utils";
 
-const PATH = resolve(__dirname, "input_D12.txt");
+const PATH = resolve("src/DAY_12/input_D12.txt");
 const data: string[] | undefined = readInDataStr(PATH);
 /* 
 --- Day 12: Passage Pathing ---
@@ -196,7 +196,7 @@ function partOne(data: string[] | undefined) {
     if (data) {
         const state = new Graph();
         state.populate(data);
-        console.log(state);
+        //console.log(state);
         const paths: string[] = [];
         dfs(state, [], "start", paths, smallCaveSinglePass);
         return paths.length;

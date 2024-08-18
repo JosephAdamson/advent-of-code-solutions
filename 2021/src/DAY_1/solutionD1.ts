@@ -3,7 +3,7 @@
 import { resolve } from 'path';
 import { readInDataInt } from "../utils";
 
-const PATH = resolve(__dirname, "input_D1.txt");
+const PATH = resolve("src/DAY_1/input_D1.txt");
 let data: number[] | undefined = readInDataInt(PATH);
 /*
 --- Part 1 ---

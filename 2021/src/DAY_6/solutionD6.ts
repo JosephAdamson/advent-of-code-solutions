@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { resolve } from "path";
 import { processInputIntArr } from "../utils";
 
-const PATH = resolve(__dirname, "input_D6.txt");
+const PATH = resolve("src/DAY_6/input_D6.txt");
 
 const school: number[] | undefined = processInputIntArr(PATH);
 

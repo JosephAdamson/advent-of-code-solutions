@@ -1,7 +1,7 @@
 import { readInDataStr, isSuperset, eqSet } from "../utils"
 import { resolve } from "path";
 
-const PATH = resolve(__dirname, "input_D8.txt");
+const PATH = resolve("src/DAY_8/input_D8.txt");
 const data: string[] | undefined = readInDataStr(PATH);
 /*
 --- Day 8: Seven Segment Search ---

@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { resolve } from "path";
 import { drawMatrix } from "../utils";
 
-const PATH = resolve(__dirname, "input_D5.txt");
+const PATH = resolve("src/DAY_5/input_D5.txt");
 
 const vectors: string[][] = [];
 
@@ -203,7 +203,7 @@ function partTwo(vectors: string[][], lines: number[][]) {
     }
     return sumIntersectingLines(lines);
 }
-console.log(partTwo(vectors, lines));
+// console.log(partTwo(vectors, lines));
 
 export {
     partOne,

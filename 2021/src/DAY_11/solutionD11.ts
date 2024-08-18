@@ -2,7 +2,7 @@ import { resolve } from "path";
 import { padMatrix, processData2DIntArr, drawMatrix } from "../utils";
 import { run } from "node:test";
 
-const PATH = resolve(__dirname, "input_D11.txt");
+const PATH = resolve("src/DAY_11/input_D11.txt");
 const data: number[][] | undefined = processData2DIntArr(PATH);
 
 /*

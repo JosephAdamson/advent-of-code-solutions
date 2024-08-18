@@ -3,7 +3,7 @@ import { resolve } from "path";
 import { padMatrix, processData2DIntArr } from "../utils";
 
 
-const PATH = resolve(__dirname, "input_D9.txt");
+const PATH = resolve("src/DAY_9/input_D9.txt");
 
 // handle edge cases, rather than use a buch of if statments to address each case
 // we create a padded copy of the original array and iterate over that.
@@ -159,7 +159,7 @@ function partOne(data: number[][] | undefined) {
         return riskLevel;
     }
 }
-//console.log(partOne(data));
+// console.log(partOne(data));
 
 /*
 --- Part Two ---
@@ -228,7 +228,7 @@ function partTwo(data: number[][] | undefined) {
     }
 }
 
-console.log(partTwo(data));
+//console.log(partTwo(data));
 
 // Helper function to sweep the area around each low point and find the size of its
 // surrounding basin.
