@@ -248,13 +248,13 @@ right?
 Thoughts:
 
     The dumb solution:
+
     - Create the big matrix from the original input (lots of memory), run djikstra on it
     and hope for the best.
 
     Big brain solution (?):
-    - This might blow djikstra up, could use A* with a heuristic?
 
-    - The heuristic:
+    - This might blow djikstra up, could use A* with a heuristic?
 
         - The heuristic needs to account for the fact that the next section to the right
         and below are the same grid with each cell @ +1 while the grid sections above and 
