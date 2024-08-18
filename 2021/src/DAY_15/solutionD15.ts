@@ -54,7 +54,8 @@ Thoughts:
 
     This is a search problem. We can visualize this cave matrix as a graph, each cell
     of the matrix is a node with neightbours (unless located at the edge of the 
-    space). We can move up right, left and down. We can use Dijkstra for this.
+    space). We can move up right, left and down. We can use Dijkstra for this with a 
+    dynamic programming table to keep track of the cost of the current path at each node.
 
 */
 function isInBounds(y: number, x: number, n: number, m: number) {
