@@ -1,7 +1,6 @@
 import { resolve } from "path";
 import { processData2DIntArr, MatrixNode, NodePriorityQueue } from "../utils";
 
-// no longer making a copy of.txt files for dist
 const PATH = resolve("src/DAY_15/input_D15.txt");
 const caveGraph: number[][] = processData2DIntArr(PATH);
 
@@ -69,7 +68,7 @@ function partOne(caveGraph: number[][]) {
         const movesY = [-1, 0, 1, 0];
         const movesX = [0, 1, 0, -1];
     
-        // Have too init with null to get this to work properly.
+        // Have to init with null to get this to work properly.
         const dpTable = Array(n)
             .fill(null)
             .map(_ => Array(m).fill(Number.MAX_SAFE_INTEGER));
@@ -78,7 +77,7 @@ function partOne(caveGraph: number[][]) {
             .map(_ => (Array(m).fill(false)));
         const q = new NodePriorityQueue(100);
         
-        // we don't count the risck level of our starting position so we
+        // we don't count the risk level of our starting position so we
         // ignore the value here on the caveGraph
         dpTable[0][0] = 0;
         q.insert(new MatrixNode(0, 0, dpTable[0][0]));
@@ -239,6 +238,7 @@ right corner with the lowest total risk:
 75698651748671976285978218739618932984172914319528
 56475739656758684176786979528789718163989182927419
 67554889357866599146897761125791887223681299833479
+
 The total risk of this path is 315 (the starting position is still never entered, so its risk 
 is not counted).
 
@@ -255,9 +255,11 @@ Thoughts:
     - This might blow djikstra up, could use A* with a heuristic?
 
     - The heuristic:
+
         - The heuristic needs to account for the fact that the next section to the right
         and below are the same grid with each cell @ +1 while the grid sections above and 
         to the left are the same grid with each cell @ -1
+
         - Could we cheese this with an exisiting heuristic like the Manhattan distance?
 
     - Would we still need to generate the big matrix (graph, dpTable and visited)?
