@@ -1,5 +1,6 @@
 import { resolve } from "path";
-import { processData2DIntArr, MatrixNode, NodePriorityQueue } from "../utils";
+import { processData2DIntArr, MatrixNode, NodePriorityQueue, drawMatrix } from "../utils";
+import { performance } from "perf_hooks";
 
 const PATH = resolve("src/DAY_15/input_D15.txt");
 const caveGraph: number[][] = processData2DIntArr(PATH);
@@ -57,6 +58,10 @@ Thoughts:
     space). We can move up right, left and down. We can use Dijkstra for this with a 
     dynamic programming table to keep track of the cost of the current path at each node.
 
+    I've kept track of nodes I've visited in a priority queue which was implemented using 
+    a binary heap.
+
+    Result runs in 8ms.
 */
 function isInBounds(y: number, x: number, n: number, m: number) {
     return y >= 0 && y < n && x >= 0 && x < m;
@@ -108,7 +113,10 @@ function partOne(caveGraph: number[][]) {
     }
 }
 
-//console.log(partOne(caveGraph));
+// const start = performance.now();
+// console.log(partOne(caveGraph));
+// const end = performance.now();
+// console.log(`${end - start}ms`);
 
 /* 
 --- Part Two ---
@@ -250,21 +258,45 @@ Thoughts:
 
     The dumb solution:
 
-    - Create the big matrix from the original input (lots of memory), run djikstra on it
-    and hope for the best.
+    - Create a new search space from the original input (lots of memory),
+     run djikstra on it and hope for the best.
 
-    Big brain solution (?):
-
-    - This might blow djikstra up, could use A* with a heuristic?
-
-        - The heuristic needs to account for the fact that the next section to the right
-        and below are the same grid with each cell @ +1 while the grid sections above and 
-        to the left are the same grid with each cell @ -1
-
-        - Could we cheese this with an exisiting heuristic like the Manhattan distance?
-
-    - Would we still need to generate the big matrix (graph, dpTable and visited)?
+    Result runs in 81ms
 */
+function expandGraph(graph: number[][], expandFactor: number) {
+    const n = graph.length;
+    const m = graph[0].length;
+    const bigGraph = Array(n * expandFactor)
+        .fill(null)
+        .map(_ => Array(m * expandFactor).fill(0));
+    
+    for (let y = 0; y < bigGraph.length; y++) {
+        for (let x = 0; x < bigGraph[0].length; x++) {
+            const originalValue = graph[y % n][x % m]
+            const yPlus = Math.floor(y / n);
+            const xPlus = Math.floor(x / m); 
+            const newVal = originalValue + xPlus + yPlus
+            bigGraph[y][x] = newVal === 9 ? newVal : newVal % 9;
+            if (bigGraph[y][x] === 0) {
+                bigGraph[y][x] += 1
+            }
+        }   
+    }
+    return bigGraph;
+}
+
+function partTwo(caveGraph: number[][], expandFactor: number) {
+    const g = expandGraph(caveGraph, expandFactor);
+    return partOne(g);
+}
+
+const start = performance.now();
+console.log(partTwo(caveGraph, 5));
+const end = performance.now();
+console.log(`${end - start}ms`);
+
 export {
-    partOne
+    partOne,
+    expandGraph,
+    partTwo
 }
