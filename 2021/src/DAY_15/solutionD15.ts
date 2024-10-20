@@ -261,7 +261,7 @@ Thoughts:
     - Create a new search space from the original input (lots of memory),
      run djikstra on it and hope for the best.
 
-    Result runs in 81ms
+    Result runs in 81ms.
 */
 function expandGraph(graph: number[][], expandFactor: number) {
     const n = graph.length;

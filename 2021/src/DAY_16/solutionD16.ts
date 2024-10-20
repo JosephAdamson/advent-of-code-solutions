@@ -315,7 +315,7 @@ transmission?
 Thoughts:
 
     - modify part one to also process literals and do operations on those literals according to
-    op flag (see above)
+    op flag (see above).
 */
 
 function partTwo(packet: string) {

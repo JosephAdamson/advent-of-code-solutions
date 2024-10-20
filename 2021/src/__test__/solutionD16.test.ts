@@ -1,6 +1,6 @@
 import { partOne, partTwo } from "../DAY_16/solutionD16";
 
-// part one
+//-----part one-----
 const eg1 = "8A004A801A8002F478"; //packet version sum = 16
 const eg2 = "620080001611562C8802118E34"; //packet version sum = 12
 const eg3 = "C0015000016115A2E0802F182340"; //packet version sum = 23 
@@ -30,7 +30,7 @@ test("part one test 4", () => {
     expect(actual).toBe(expected);
 });
 
-// part two
+//-----part two-----
 const eg5 = "C200B40A82"; // 3
 const eg6 = "04005AC33890"; // 54
 const eg7 = "880086C3E88112"; // 7
