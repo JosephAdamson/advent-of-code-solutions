@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "code": "tsc; node ./dist/DAY_15/solutionD15.js",
-    "test": "jest ./src/__test__"
+    "code": "tsc; node ./dist/DAY_16/solutionD16.js",
+    "test-all": "jest ./src/__test__",
+    "test": "jest ./src/__test__/solutionD16.test.ts"
   },
   "keywords": [],
   "author": "",

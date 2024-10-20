@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { processData2DIntArr, MatrixNode, NodePriorityQueue, drawMatrix } from "../utils";
+import { processData2DIntArr, MatrixNode, NodePriorityQueue } from "../utils";
 import { performance } from "perf_hooks";
 
 const PATH = resolve("src/DAY_15/input_D15.txt");
