@@ -1,4 +1,3 @@
-// import { readInDataStr } from "../utils";
 import { resolve } from "path";
 import { readFileSync } from "fs";
 
